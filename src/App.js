@@ -23,6 +23,14 @@ import Pairings from "./pages/pairing/Pairings";
 import ViewSession from "./pages/session/ViewSession";
 import UpdateSession from "./pages/session/UpdateSession";
 import Sessions from "./pages/session/Sessions";
+import AddBatch from "./pages/batch/AddBatch";
+import AddLecturer from "./pages/lecturer/AddLecturer";
+import AddDepartment from "./pages/department/AddDepartment";
+import UpdateDepartment from "./pages/department/UpdateDepartment";
+import AddCourse from "./pages/course/AddCourse";
+import AddHall from "./pages/hall/AddHall";
+import AddPair from "./pages/pairing/AddPair";
+import AddSession from "./pages/session/AddSession";
 
 
 
@@ -32,32 +40,46 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/batches' component={Batches} />
-          <Route path='/batches/v/:id' component={ViewBatch} />
-          <Route path='/batches/u/:id' component={UpdateBatch} />
-          <Route path='/lecturers' component={Lecturers} />
-          <Route path='/lecturers/v/:id' component={ViewLecturer} />
-          <Route path='/lecturers/u/:id' component={UpdateLecturer} />
-          <Route path='/departments/u/:id' component={UpdateLecturer} />
-          <Route path='/departments/v/:id' component={ViewDepartment} />
-          <Route path='/departments' component={Departments} />
-          <Route path='/courses/v/:id' component={ViewCourse} />
-          <Route path='/courses/u/:id' component={UpdateCourse} />
-          <Route path='/courses' component={Courses} />
-          <Route path='/halls/v/:id' component={ViewHall} />
-          <Route path='/halls/u/:id' component={UpdateHall} />
-          <Route path='/halls' component={Halls} />
-          <Route path='/pairings/v/:id' component={ViewPair}/>
-          <Route path='/pairings/u/:id' component={UpdatePair}/>
-          <Route path='/pairings' component={Pairings}/>
-          <Route path='/sessions/v/:id' component={ViewSession}/>
-          <Route path='/sessions/u/:id' component={UpdateSession}/>
-          <Route path='/sessions' component={Sessions}/>
+            <Route path='/' exact component={Home}/>
+            <Route path='/batches' exact component={Batches}/>
+            <Route path='/lecturers' exact component={Lecturers}/>
+            <Route path='/departments' exact component={Departments} />
+            <Route path='/courses' exact component={Courses} />
+            <Route path='/halls' exact component={Halls} />
+            <Route path='/pairings' exact component={Pairings}/>
+            <Route path='/sessions' exact component={Sessions}/>
+
+
+          <Route path='/batches/view/:id' component={ViewBatch} />
+          <Route path='/batches/update/:id' component={UpdateBatch} />
+          <Route path='/batches/add' component={AddBatch} />
+
+          <Route path='/lecturers/view/:id' component={ViewLecturer} />
+          <Route path='/lecturers/update/:id' component={UpdateLecturer} />
+          <Route path='/lecturers/add' component={AddLecturer} />
+
+          <Route path='/departments/view/:id' component={ViewDepartment} />
+          <Route path='/departments/update/:id' component={UpdateDepartment} />
+          <Route path='/departments/add' component={AddDepartment} />
+
+          <Route path='/courses/view/:id' component={ViewCourse} />
+          <Route path='/courses/update/:id' component={UpdateCourse} />
+          <Route path='/courses/add' component={AddCourse} />
+
+          <Route path='/halls/view/:id' component={ViewHall} />
+          <Route path='/halls/update/:id' component={UpdateHall} />
+          <Route path='/halls/add' component={AddHall} />
+
+          <Route path='/pairings/view/:id' component={ViewPair}/>
+          <Route path='/pairings/update/:id' component={UpdatePair}/>
+          <Route path='/pairings/add' component={AddPair}/>
+
+          <Route path='/sessions/view/:id' component={ViewSession}/>
+          <Route path='/sessions/update/:id' component={UpdateSession}/>
+          <Route path='/sessions/add' component={AddSession}/>
+
         </Switch>
       </Router>
-
-      <button className={'btn btn-danger'}>Chase me</button>
     </>
   );
 }
