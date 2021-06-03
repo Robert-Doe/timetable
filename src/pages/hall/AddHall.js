@@ -4,8 +4,14 @@ function AddHall(){
     return(
         <section className={'container mt-5 py-5'} >
             <section className={'container px-5'} >
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/">Home</a></li>
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/halls">Halls</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Add</li>
+                    </ol>
+                </nav>
                 <form className={'px-5'}>
-
                     <div className={'row'}>
                         <div className="col-lg-6 form-group pt-3">
                             <label htmlFor="exampleFormControlSelect1">Select Department</label>
@@ -44,7 +50,7 @@ function AddHall(){
 
                     <div className="row pt-3">
                         <div className="form-group">
-                            <input id={'add_lecturer'} className="btn btn-primary form-control w-25" type={'submit'} value={'Add Lecturer'}></input>
+                            <input id={'add_hall'} className="btn btn-primary form-control w-25" type={'submit'} value={'Add Hall'}></input>
                         </div>
                     </div>
 

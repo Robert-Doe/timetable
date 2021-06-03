@@ -22,7 +22,37 @@ label{
   font-weight: bold;
 }
 
+table{
+  border-radius: 20px;
+}
+
+tr td{
+  cursor: pointer;
+}
+
 input[type='submit']{
     border-radius: 20px;
+}
+
+section.table div.col{
+  border: 1px solid black;
+  height: 100px;
+}
+div.period{
+  display: flex;
+  flex-direction: column;
+}
+
+div.period span.mid{
+  align-self: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+div.period span.start{
+  font-size: 0.2em;
+  align-self: flex-start;
+}
+section.row{
+  border:1px dashed black;
 }
 

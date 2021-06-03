@@ -51,8 +51,8 @@ export const SidebarData = [
     cName: 'nav-text'
   } ,
   {
-    title: 'Admin',
-    path: '/admin',
+    title: 'Settings',
+    path: '/settings',
     icon: <RiIcons.RiAdminFill /> ,
     cName: 'nav-text'
   }

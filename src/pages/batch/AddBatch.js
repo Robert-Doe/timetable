@@ -4,6 +4,15 @@ function AddBatch(){
     return(
         <section className={'container mt-5 py-5'} >
             <section className={'container px-5'} >
+
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/">Home</a></li>
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/batches">Batches</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Add</li>
+                    </ol>
+                </nav>
+
                 <form className={'px-5'}>
 
                     <div className={'row'}>

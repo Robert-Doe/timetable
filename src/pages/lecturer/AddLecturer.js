@@ -4,6 +4,13 @@ function AddLecturer(){
     return(
         <section className={'container mt-5 py-5'} >
             <section className={'container px-5'} >
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/">Home</a></li>
+                        <li className="breadcrumb-item"><a href="http://localhost:3000/lecturers">Lecturers</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Add</li>
+                    </ol>
+                </nav>
             <form className={'px-5'}>
                 <div className="row">
                     <div className="col-lg-6 pt-3">
