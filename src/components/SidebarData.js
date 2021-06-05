@@ -38,6 +38,12 @@ export const SidebarData = [
     icon: <AiIcons.AiTwotoneFolderOpen/>,
     cName: 'nav-text'
   }
+  , {
+    title: 'Pair',
+    path: '/pairings',
+    icon: <AiIcons.AiOutlineBlock/>,
+    cName: 'nav-text'
+  }
   ,{
     title: 'Hall',
     path: '/halls',

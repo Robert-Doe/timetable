@@ -1,18 +1,57 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
-import periods from "../../data/period";
+import sessions from "../../data/sessions";
 import Period from "./Period";
 import Days from './Days';
 import BackFill from "./BackFill";
 
-let prevperiod = (session) => {
-    return session.toString().split("-")
-}
+
 let pi=(text)=>{
     return Number.parseInt(text)
 }
 let cellInterval=(active,previous)=>{
     return Math.abs(pi(active[1])-pi(previous[2]))
+}
+let day=(day)=>{
+    const sess=sessions.filter((period)=>period.day===day)
+        console.log(sess)
+    return (sess)
+}
+function TableRow({full_day,day_abbr}){
+    return (
+        <section className="row p-0">
+            <Days name={full_day}/>
+            {
+                day(day_abbr).map((object, index) => {
+                    const {period}=object;
+                    const session = period.split("-")
+                    let today=day(day_abbr)
+                    console.log(session)
+                    if (index !== 0) {
+                        const prevSession=today[index-1].period.split('-')
+                        const difference = cellInterval(session,prevSession)
+                        console.log(difference)
+                        if (difference > 0) {
+                            return (<>
+                                <BackFill space={difference} key={index}/>
+                                < Period session={object} key={index}/>
+                            </>)
+                        } else {
+                            return (< Period session={object} key={index}/>)
+                        }
+                    } else {
+                        const difference=Math.abs(0-pi(session[1]))
+                        return (<>
+                                <BackFill space={difference} />
+                                < Period session={object} />
+                            </>
+                        )
+                    }
+
+                })
+            }
+        </section>
+    )
 }
 function ViewBatch() {
     let {id} = useParams();
@@ -29,69 +68,11 @@ function ViewBatch() {
                 </nav>
             </div>
             <main className={'px-3'}>
-                <section className="row p-0">
-                    <Days name={'Monday'}/>
-                    {periods.monday.map((object, index) => {
-
-                        const {period}=object;
-                        const session = period.split("-")
-                        console.log(session)
-                        if (index !== 0) {
-                            const prevSession=periods.monday[index-1].period.split('-')
-                            const difference = cellInterval(session,prevSession)
-                            console.log(difference)
-                            if (difference > 0) {
-                                return (<>
-                                    <BackFill space={difference} key={index}/>
-                                    < Period session={object} key={index}/>
-                                </>)
-                            } else {
-                                return (< Period session={object} key={index}/>)
-                            }
-                        } else {
-                                const difference=Math.abs(0-pi(session[1]))
-                            return (<>
-                                <BackFill space={difference} />
-                                < Period session={object}/>
-                                </>
-                                )
-                        }
-
-                    })
-                    }
-                </section>
-                <section className="row p-0">
-                    <Days name={'Tuesday'}/>
-                    {periods.wednesday.map((object, index) => {
-                        if (object !== null)
-                            return <Period session={object}/>
-                    })
-                    }
-                </section>
-                <section className="row p-0">
-                    <Days name={'Wednesday'}/>
-                    {periods.thursday.map((object, index) => {
-                        if (object !== null)
-                            return <Period session={object}/>
-                    })
-                    }
-                </section>
-                <section className="row p-0">
-                    <Days name={'Thursday'}/>
-                    {periods.friday.map((object, index) => {
-                        if (object !== null)
-                            return <Period session={object}/>
-                    })
-                    }
-                </section>
-                <section className="row p-0">
-                    <Days name={'Friday'}/>
-                    {periods.tuesday.map((object, index) => {
-                        if (object !== null)
-                            return <Period session={object}/>
-                    })
-                    }
-                </section>
+                <TableRow full_day={'Monday'} day_abbr={'Mon'}/>
+                <TableRow full_day={'Tuesday'} day_abbr={'Tues'}/>
+                <TableRow full_day={'Wednesday'} day_abbr={'Wed'}/>
+                <TableRow full_day={'Thursday'} day_abbr={'Thurs'}/>
+                <TableRow full_day={'Friday'} day_abbr={'Fri'}/>
             </main>
 
         </section>

@@ -31,6 +31,9 @@ import AddCourse from "./pages/course/AddCourse";
 import AddHall from "./pages/hall/AddHall";
 import AddPair from "./pages/pairing/AddPair";
 import AddSession from "./pages/session/AddSession";
+import BatchSession from "./pages/table/batches/BatchSession";
+import HallSession from "./pages/table/hall/HallSession";
+import LecturerSession from "./pages/table/lecturers/LecturerSession";
 
 
 
@@ -77,6 +80,15 @@ function App() {
           <Route path='/sessions/view/:id' component={ViewSession}/>
           <Route path='/sessions/update/:id' component={UpdateSession}/>
           <Route path='/sessions/add' component={AddSession}/>
+
+          <Route path={'/tables/batch/:id'} component={BatchSession} />
+          <Route path={'/tables/hall/:id'} component={HallSession} />
+          <Route path={'/tables/lecturer/:id'} component={LecturerSession} />
+
+          <Route path={'/tables/batches'} component={BatchSession} />
+          <Route path={'/tables/halls'} component={HallSession} />
+          <Route path={'/tables/lecturers'} component={LecturerSession} />
+
 
         </Switch>
       </Router>

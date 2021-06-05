@@ -35,12 +35,19 @@ input[type='submit']{
 }
 
 section.table div.col{
-  border: 1px solid black;
+  border-right: 1px solid black;
   height: 100px;
 }
 div.period{
+  width: 100%;
+  height: 70px;
   display: flex;
   flex-direction: column;
+
+}
+
+div.period > span#day{
+  justify-self: center;
 }
 
 div.period span.mid{
@@ -53,6 +60,6 @@ div.period span.start{
   align-self: flex-start;
 }
 section.row{
-  border:1px dashed black;
+  border:1px solid black;
 }
 
