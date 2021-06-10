@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
 import sessions from "../../../data/sessions";
-import {HallClassTable} from "./HallClassTable";
+import {Table} from "./Table";
 
 function HallSession() {
     let {id} = useParams();
@@ -16,7 +16,7 @@ function HallSession() {
                     </ol>
                 </nav>
             </div>
-            <HallClassTable id={id}/>
+            <Table id={id}/>
         </section>
     )
 }

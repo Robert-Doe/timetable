@@ -1,13 +1,21 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
 import sessions from "../../../data/sessions";
-import {BatchClassTable} from "../batches/BatchClassTable";
-import {LecturerClassTable} from "./LecturerClassTable";
+//import {Table} from "../batches/Table";
+import {Table} from "./Table";
 
 
 
 function LecturerSession() {
     let {id} = useParams();
+    if(!sessions.some((session)=>session.lecturer===id))
+    {
+        return (
+            <section className="container py-5">
+                <h1 className="display-5">No Lecturer with id: {id}</h1>
+            </section>
+        )
+    }
 
     return (
         <section className={'container-fluid mt-2 py-3'}>
@@ -20,7 +28,7 @@ function LecturerSession() {
                     </ol>
                 </nav>
             </div>
-            <LecturerClassTable id={id}/>
+            <Table id={id}/>
         </section>
     )
 }

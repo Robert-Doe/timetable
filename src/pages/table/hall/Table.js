@@ -1,7 +1,7 @@
 import React from 'react'
 import Days from "../../session/Days";
 import BackFill from "../../session/BackFill";
-import Period from "../../session/Period";
+import Period from "./Period";
 import sessions from "../../../data/sessions";
 
 let cellInterval=(active,previous)=>{
@@ -57,7 +57,7 @@ function TableRow({full_day,day_abbr,class_id}){
 }
 
 
-export function HallClassTable({id}) {
+export function Table({id}) {
 
     return(
         <main className={'px-3'}>

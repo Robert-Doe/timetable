@@ -1,10 +1,18 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
 import sessions from "../../../data/sessions";
-import {BatchClassTable} from "./BatchClassTable";
+import {Table} from "./Table";
 
 function BatchSession() {
     let {id} = useParams();
+    if(!sessions.some((session)=>session.batch_id===id))
+    {
+        return (
+            <section className="container py-5">
+                <h1 className="display-5">No Batch with id: {id}</h1>
+            </section>
+        )
+    }
     return (
         <section className={'container-fluid mt-2 py-3'}>
             <div className="container">
@@ -16,7 +24,8 @@ function BatchSession() {
                     </ol>
                 </nav>
             </div>
-            <BatchClassTable id={id}/>
+            <Table id={id}/>
+            {/*<Table id={id}/>*/}
         </section>
     )
 }

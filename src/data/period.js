@@ -1,184 +1,48 @@
 const periods = [{
-        number: 2,
-        day: 'Mon', credit: 1,
-        period: "M-2-3",
-        lecturer: 'R. Doe',
-        class: ['SF5', 'FF1'],
-        course: 'CSM123'
-    },
-    {
-        number: 3,
-        day: 'Mon', credit: 2,
-        lecturer: 'R. Doe',
-        period: "M-4-6",
-        class: ['BB2', 'FF21'],
-        course: 'CSM123'
-    },
-    {
-        number: 3,
-        day: 'Mon', credit: 1,
-        class: ['SS2'],
-        period: "M-7-8",
-        lecturer: 'R. Doe',
-        course: 'CSM112'
-    },
-    {
-        number: 3,
-        day: 'Mon', credit: 1,
-        period: "M-8-9",
-        lecturer: 'R. Doe',
-        class: ['SC2'],
-        course: 'MATH132'
-    }, {
-        number: 3,
-        day: 'Mon', credit: 1,
-        period: "M-9-10",
-        lecturer: 'R. Doe',
-        class: ['FC4'],
-        course: 'CSM132'
-    }, {
-        number: 2,
-        day: 'Tues',
-        credit: 1,
-        period: 'T-1-2',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }, {
-        number: 3,
-        day: 'Tues',
-        credit: 2,
-        period: 'T-3-5',
-        lecturer: 'R. Doe',
-        class: ['SC2'],
-        course: 'MATH132'
-    }, {
-        number: 3,
-        day: 'Tues', credit: 1,
-        lecturer: 'R. Doe',
-        class: ['FC4'],
-        period: '5-6',
-        course: 'CSM132'
-    }, {
-        number: 3,
-        day: 'Tues', credit: 2,
-        lecturer: 'R. Doe',
-        period: '6-8',
-        class: ['BB2'],
-        course: 'CSM123'
-    }, {
-        number: 2,
-        day: 'Tues', credit: 1,
-        period: '8-9',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }, {
-        number: 2,
-        day: 'Tues', credit: 1,
-        period: '9-10',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }, {
-        number: 2,
-        day: 'Wed', credit: 1,
-        period: "M-2-3",
-        lecturer: 'R. Doe',
-        class: ['SF5', 'FF1'],
-        course: 'CSM123'
-    },
-    {
-        number: 3,
-        day: 'Wed', credit: 2,
-        lecturer: 'R. Doe',
-        period: "M-4-6",
-        class: ['BB2', 'FF21'],
-        course: 'CSM123'
-    },
-    {
-        number: 3,
-        day: 'Wed', credit: 1,
-        class: ['SS2'],
-        period: "M-7-8",
-        lecturer: 'R. Doe',
-        course: 'CSM112'
-    },
-    {
-        number: 3,
-        day: 'Wed', credit: 1,
-        period: "M-8-9",
-        lecturer: 'R. Doe',
-        class: ['SC2'],
-        course: 'MATH132'
-    }, {
-        number: 3,
-        day: 'Wed', credit: 1,
-        period: "M-9-10",
-        lecturer: 'R. Doe',
-        class: ['FC4'],
-        course: 'CSM132'
-    }, {
-        number: 2,
-        day: 'Thurs', credit: 1,
-        period: 'T-1-2',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }, {
-        number: 3,
-        day: 'Thurs', credit: 2,
-        period: 'T-3-5',
-        lecturer: 'R. Doe',
-        class: ['SC2'],
-        course: 'MATH132'
-    }, {
-        number: 3,
-        day: 'Thurs', credit: 1,
-        lecturer: 'R. Doe',
-        class: ['FC4'],
-        period: '5-6',
-        course: 'CSM132'
-    }, {
-        number: 3,
-        day: 'Thurs', credit: 2,
-        lecturer: 'R. Doe',
-        period: '6-8',
-        class: ['BB2'],
-        course: 'CSM123'
-    }, {
-        number: 2,
-        day: 'Thurs',
-        credit: 1,
-        period: '8-9',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }, {
-        number: 2,
-        day: 'Thurs',
-        credit: 1,
-        period: '9-10',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }
-    , {
-        number: 1,
-        day: 'Fri', credit: 2,
-        period: 'T-1-2',
-        class: ['SF1'],
-        lecturer: 'R.Doe',
-        course: 'CSM 123'
-    }, {
-        number: 2,
-        day: 'Fri', credit: 1,
-        period: 'T-3-5',
-        lecturer: 'R. Doe',
-        class: ['SF5'],
-        course: 'CSM123'
-    }
-
+    id:1,
+    start:'8:00',
+    end:'8:55'
+},{
+    id:2,
+    start:'9:00',
+    end:'9:55'
+},{
+    id:3,
+    start:'10:30',
+    end:'11:25'
+},{
+    id:4,
+    start:'11:30',
+    end:'12:25'
+},{
+    id:5,
+    start:'1:00',
+    end:'2:00'
+},{
+    id:6,
+    start:'2:00',
+    end:'3:00'
+},{
+    id:7,
+    start:'3:00',
+    end:'4:00'
+},{
+    id:8,
+    start:'4:00',
+    end:'5:00'
+},{
+    id:9,
+    start:'5:00',
+    end:'6:00'
+},{
+    id:10,
+    start:'6:00',
+    end:'7:00'
+},{
+    id:11,
+    start:'7:00',
+    end:'8:00'
+}
 ]
 export default periods;
 
