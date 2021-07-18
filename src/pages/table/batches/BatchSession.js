@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import sessions from "../../../data/sessions";
 import {Table} from "./Table";
 
+
 function BatchSession() {
     let {id} = useParams();
     if(!sessions.some((session)=>session.batch_id===id))

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
-import sessions from "../../../data/sessions";
+//import sessions from "../../../data/sessions";
 import {Table} from "./Table";
 
 function HallSession() {

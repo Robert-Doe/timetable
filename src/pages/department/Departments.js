@@ -1,14 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-const viewDepartmentHandler=(e)=>{
-    const targetFile=e.target.parentNode;
-    console.log(targetFile.childNodes[0].textContent);
-    window.location.href=`http://localhost:3000/departments/${targetFile.childNodes[0].textContent}`
 
-}
+function Departments() {
+    const viewDepartmentHandler = (e) => {
+        const targetFile = e.target.parentNode;
+        console.log(targetFile.childNodes[0].textContent);
+        window.location.href = `http://localhost:3000/departments/view/${targetFile.childNodes[0].textContent}`
+    }
 
-function Departments(){
-    return(
+    const [departmentList, setDepartmentList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:9999/departments', {
+            method: 'GET',
+            mode: 'cors',
+            origin: 'http://localhost:3000/',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(data => {
+                setDepartmentList(data)
+            })
+            .catch(err => {
+                alert(err)
+                console.log(err);
+            })
+    }, [])
+
+
+    return (
         <section className={'container mt-5 py-5'}>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
@@ -16,6 +38,7 @@ function Departments(){
                     <li className="breadcrumb-item active" aria-current="page">Departments</li>
                 </ol>
             </nav>
+
             <table className="table table-bordered" style={{borderRadius:'50px'}} >
                 <thead className={'table-dark'}>
                 <tr>
@@ -26,17 +49,17 @@ function Departments(){
                 </tr>
                 </thead>
                 <tbody>
-                <tr onClick={viewDepartmentHandler}>
-                    <td>fad23fa78829abc34e</td>
-                    <td>Computer Science</td>
-                    <td>Software and Programming</td>
-                    <td>CS</td>
-                </tr> <tr onClick={viewDepartmentHandler}>
-                    <td>f98897987999abc34e</td>
-                    <td>Computer Science</td>
-                    <td>Software and Programming</td>
-                    <td>CS</td>
-                </tr>
+                {departmentList && departmentList.map((department) => {
+                    const {_id, name, details, dept_abbr} = department;
+                    return (
+                        <tr onClick={viewDepartmentHandler} key={_id}>
+                            <td>{_id}</td>
+                            <td>{name}</td>
+                            <td>{details}</td>
+                            <td>{dept_abbr}</td>
+                        </tr>
+                    )
+                })}
                 </tbody>
             </table>
         </section>

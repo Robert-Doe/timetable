@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');*/
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+/*@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');*/
 
 * {
   box-sizing: border-box;
@@ -18,9 +20,6 @@
   font-size: 3rem;
 }
 
-label{
-  font-weight: bold;
-}
 
 table{
   border-radius: 20px;
@@ -30,36 +29,119 @@ tr td{
   cursor: pointer;
 }
 
-input[type='submit']{
-    border-radius: 20px;
+input[type='submit'], button.btn, input[type='reset'] {
+  border-radius: 20px;
 }
 
 section.table div.col{
   border-right: 1px solid black;
   height: 100px;
 }
-div.period{
-  width: 100%;
-  height: 70px;
+div.period {
   display: flex;
   flex-direction: column;
-
+  width: 100%;
+  height: 70px;
+  padding-left: 0px;
+  justify-content: center;
+  align-content: center;
+  margin-left: 0px;
 }
 
-div.period > span#day{
+/*div.period > span#day{
   justify-self: center;
-}
+}*/
 
-div.period span.mid{
+div.period span.mid {
   align-self: center;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
-div.period span.start{
-  font-size: 0.2em;
+
+div.period span.start {
+  font-size: 0.7em;
   align-self: flex-start;
 }
-section.row{
-  border:1px solid black;
+
+section.row.table-row {
+  border: 1px solid black;
 }
+
+
+.nav.nav-tabs a.nav-link {
+  text-decoration: none;
+  color: #666666;
+}
+
+.nav.nav-tabs a.nav-link.active {
+  font-weight: bold;
+  color: #001;
+}
+
+.jumbotron {
+  background-color: rgba(243, 233, 243, 0.61);
+}
+
+
+thead.thead-dark {
+  color: white;
+}
+
+.period-list {
+  list-style: none;
+  padding: 5px 10px;
+  background-color: #000000;
+  border-radius: 10px;
+  color: #f8f7ff;
+  font-weight: bold;
+}
+
+
+@media (min-width: 992px) {
+  .period-list {
+    /*padding: 5px 13px;*/
+    width: 30%;
+    text-align: center;
+  }
+}
+
+
+legend {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
+
+aside.nav-aside > ul {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  position: absolute;
+  right: 10px;
+  flex-grow: 1;
+}
+
+aside.nav-aside > ul > li {
+  margin-top: 15px;
+  background-color: orange /*#000011*/;
+  color: #f8f7ff;
+  padding: 7px 15px;
+  border-radius: 20px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.link {
+  color: #f8f7ff;
+  font-weight: bold;
+}
+
+svg path {
+  fill: #f8f7ff;
+}
+
 

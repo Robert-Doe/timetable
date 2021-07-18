@@ -14,24 +14,24 @@ let pi=(text)=>{
 }
 
 let day=(day,id)=>{
-    const sess=sessions.filter((session)=>session.day==day && session.batch_id===id)
+    const sess = sessions.filter((session) => session.day === day && session.batch_id === id)
     console.log(sess)
     return (sess)
 }
 
 function TableRow({full_day,day_abbr,class_id}){
     return (
-        <section className="row p-0">
+        <section className="row table-row p-0">
             <Days name={full_day}/>
             {
-                day(day_abbr,class_id).map((object, index) => {
-                    const {period}=object;
+                day(day_abbr, class_id).map((object, index) => {
+                    const {period} = object;
                     const session = period.split("-")
-                    let today=day(day_abbr,class_id)
+                    let today = day(day_abbr, class_id)
                     console.log(session)
                     if (index !== 0) {
-                        const prevSession=today[index-1].period.split('-')
-                        const difference = cellInterval(session,prevSession)
+                        const prevSession = today[index - 1].period.split('-')
+                        const difference = cellInterval(session, prevSession)
                         console.log(difference)
                         if (difference > 0) {
                             return (<>

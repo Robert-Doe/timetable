@@ -1,9 +1,57 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
-function AddDepartment(){
-    return(
-        <section className={'container mt-5 py-5'} >
-            <section className={'container px-5'} >
+function AddDepartment() {
+
+    const nameRef = useRef();
+    const abbrRef = useRef();
+    const degRef = useRef();//Whether the Department Offers Six of 4 year Programs
+    const responseRef = useRef();
+
+
+    const value = (ref) => ref.current.value
+
+    const refEmpty = (ref) => {
+        return ref.current.value === ''
+    }
+
+    const addDepartmentHandler = (e) => {
+        e.preventDefault();
+        if (!refEmpty(nameRef) && !refEmpty(abbrRef)) {
+            const newDepartment = {
+                name: value(nameRef),
+                dept_abbr: value(abbrRef),
+                /*details: value(detailRef),*/
+                /*lecturers: []*/
+            }
+
+            fetch("http://localhost:9999/departments", {
+
+                // Adding method type
+                method: "POST",
+
+                // Adding body or contents to send
+                body: JSON.stringify(newDepartment),
+
+                // Adding headers to the request
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    responseRef.current.value = data.msg;
+                })
+                .catch(err => {
+                    console.log(err)
+                    responseRef.current.value = err.msg;
+                })
+
+        }
+    }
+
+    return (
+        <section className={'container mt-5 py-5'}>
+            <section className={'container px-5'}>
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="http://localhost:3000/">Home</a></li>
@@ -11,29 +59,34 @@ function AddDepartment(){
                         <li className="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </nav>
-            <form className={'px-5'}>
-                <div className="row pt-3">
-                    <div className="col">
-                        <label htmlFor="name">Name of Department</label>
-                        <input type="text" id={'name'} className="form-control" placeholder="Name of Department"/>
+                <form className={'px-5'} onSubmit={addDepartmentHandler}>
+                    <div className="row pt-3">
+                        <div className="col">
+                            <label htmlFor="name">Name of Department</label>
+                            <input type="text" id={'name'} className="form-control" placeholder="Name of Department"
+                                   ref={nameRef}/>
+                        </div>
                     </div>
-                </div>
-                <div className={'row'}>
-                    <div className="col pt-3">
-                        <label htmlFor="dept_abbr">Abbreviation</label>
-                        <input type="text" id={'dept_abbr'} className="form-control" placeholder="Department Abbreviation"/>
+                    <div className={'row'}>
+                        <div className="col-md-6 pt-3">
+                            <label htmlFor="dept_abbr">Abbreviation</label>
+                            <input type="text" id={'dept_abbr'} className="form-control"
+                                   placeholder="Department Abbreviation" ref={abbrRef}/>
+                        </div>
+                        <div className="col-md-6 pt-3">
+                            <label htmlFor="first_name" style={{color: '#f00'}}>Response</label>
+                            <input type="text" id={'response'} className="form-control" disabled
+                                   placeholder="Response :" ref={responseRef}/>
+                        </div>
                     </div>
-                </div>
-                <div className="form-group pt-3">
-                    <label htmlFor="exampleFormControlTextarea1">Details</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder={'Add any information about the department here'}></textarea>
-                </div>
-                <div className="row pt-3">
-                    <div className="form-group">
-                        <input id={'add_dept'} className="btn btn-primary form-control w-25" type={'submit'} value={'Add Department'}></input>
+
+                    <div className="row pt-3">
+                        <div className="form-group">
+                            <input id={'add_dept'} className="btn btn-primary form-control" type={'submit'}
+                                   value={'Add Department'}/>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </section>
         </section>
     )

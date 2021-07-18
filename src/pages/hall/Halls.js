@@ -3,7 +3,7 @@ import React from 'react';
 const viewHallHandler=(e)=>{
     const targetFile=e.target.parentNode;
     console.log(targetFile.childNodes[0].textContent);
-    window.location.href=`http://localhost:3000/halls/${targetFile.childNodes[0].textContent}`
+    window.location.href = `http://localhost:3000/halls/view/${targetFile.childNodes[0].textContent}`
 
 }
 

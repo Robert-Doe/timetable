@@ -1,15 +1,74 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-const viewLecturerHandler=(e)=>{
-    const targetFile=e.target.parentNode;
-    console.log(targetFile.childNodes[0].textContent);
-    window.location.href=`http://localhost:3000/lecturers/${targetFile.childNodes[0].textContent}`
+function LecturerRow({lecturer}) {
+    const [dept, setDept] = useState({})
+    const {_id, fname, lname, dept_id, courses, sessions} = lecturer;
 
+    const viewLecturerHandler = (e) => {
+        const targetFile = e.target.parentNode;
+        console.log(targetFile.childNodes[0].textContent);
+        window.location.href = `http://localhost:3000/lecturers/view/${targetFile.childNodes[0].textContent}`
+
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:9999/departments/${dept_id}`, {
+            method: 'GET',
+            mode: 'cors',
+            origin: 'http://localhost:3000/',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(data => {
+                setDept(data)
+                console.log(data)
+            })
+            .catch(err => {
+                alert(err)
+                console.log(err);
+            })
+    }, [])
+
+
+    return (
+        <tr key={_id}>
+            <td onClick={viewLecturerHandler}>{_id}</td>
+            <td nowrap={'nowrap'}>{`${fname} ${lname}`}</td>
+            <td nowrap={'nowrap'}>{dept.name}</td>
+            <td nowrap={'nowrap'}>{courses.length}</td>
+            <td nowrap={'nowrap'}>{sessions.length}</td>
+        </tr>
+    )
 }
 
 
-function Lecturers(){
-    return(
+function Lecturers() {
+
+    const [lecturerList, setLecturerList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:9999/lecturers', {
+            method: 'GET',
+            mode: 'cors',
+            origin: 'http://localhost:3000/',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(data => {
+                setLecturerList(data)
+            })
+            .catch(err => {
+                alert(err)
+                console.log(err);
+            })
+    }, [])
+
+
+    return (
         <section className={'container mt-5 py-5'}>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
@@ -17,7 +76,7 @@ function Lecturers(){
                     <li className="breadcrumb-item active" aria-current="page">Lecturers</li>
                 </ol>
             </nav>
-            <table className="table table-bordered" style={{borderRadius:'50px'}} >
+            <table className="table table-bordered" style={{borderRadius: '50px'}}>
                 <thead className={'table-dark'}>
                 <tr>
                     <th>#id</th>
@@ -28,13 +87,13 @@ function Lecturers(){
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
-                    <td onClick={viewLecturerHandler}>fad23fa78829abc34e</td>
-                    <td nowrap={'nowrap'}>Robert Doe</td>
-                    <td>Computer Science</td>
-                    <td nowrap={'nowrap'}>6</td>
-                    <td nowrap={'nowrap'}>7</td>
-                </tr>
+                {lecturerList && lecturerList.map((teacher) => {
+                    return (
+                        <LecturerRow lecturer={teacher} key={teacher._id + "main"}/>
+                    )
+                })
+                }
+
                 </tbody>
             </table>
         </section>

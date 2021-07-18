@@ -3,7 +3,7 @@ import React from 'react';
 const viewSessionHandler=(e)=>{
     const targetFile=e.target.parentNode;
     console.log(targetFile.childNodes[0].textContent);
-    window.location.href=`http://localhost:3000/sessions/${targetFile.childNodes[0].textContent}`
+    window.location.href = `http://localhost:3000/sessions/view/${targetFile.childNodes[0].textContent}`
 
 }
 
