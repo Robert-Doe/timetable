@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
 import sessions from "../../../data/sessions";
-//import {Table} from "../batches/Table";
+//import {TableOld} from "../batches/TableOld";
 import {Table} from "./Table";
 
 

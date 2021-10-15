@@ -4,8 +4,8 @@ function AddDepartment() {
 
     const nameRef = useRef();
     const abbrRef = useRef();
-    const degRef = useRef();//Whether the Department Offers Six of 4 year Programs
     const responseRef = useRef();
+    const idRef=useRef()
 
 
     const value = (ref) => ref.current.value
@@ -18,6 +18,7 @@ function AddDepartment() {
         e.preventDefault();
         if (!refEmpty(nameRef) && !refEmpty(abbrRef)) {
             const newDepartment = {
+                _id:value(idRef),
                 name: value(nameRef),
                 dept_abbr: value(abbrRef),
                 /*details: value(detailRef),*/
@@ -61,7 +62,12 @@ function AddDepartment() {
                 </nav>
                 <form className={'px-5'} onSubmit={addDepartmentHandler}>
                     <div className="row pt-3">
-                        <div className="col">
+                        <div className="col-md-6">
+                            <label htmlFor="name">Department ID</label>
+                            <input type="text" id={'name'} className="form-control" placeholder="ID Number"
+                                   ref={idRef}/>
+                        </div>
+                        <div className="col-md-6">
                             <label htmlFor="name">Name of Department</label>
                             <input type="text" id={'name'} className="form-control" placeholder="Name of Department"
                                    ref={nameRef}/>
@@ -80,9 +86,9 @@ function AddDepartment() {
                         </div>
                     </div>
 
-                    <div className="row pt-3">
+                    <div className="row pt-5 d-flex justify-content-center">
                         <div className="form-group">
-                            <input id={'add_dept'} className="btn btn-primary form-control" type={'submit'}
+                            <input id={'add_dept'} className="btn btn-warning form-control bg-theme" type={'submit'}
                                    value={'Add Department'}/>
                         </div>
                     </div>

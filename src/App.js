@@ -36,7 +36,7 @@ import HallSession from "./pages/table/hall/HallSession";
 import LecturerSession from "./pages/table/lecturers/LecturerSession";
 import Settings from "./pages/settings/Settings";
 import {DeptBatchCourses} from "./pages/department/DeptBatchCourses";
-import AlgorithmScheduler from "./pages/AlgorithmScheduler";
+import AlgorithmScheduler from "./pages/algorithm/AlgorithmSchedulerWithAsync";
 
 
 function App() {

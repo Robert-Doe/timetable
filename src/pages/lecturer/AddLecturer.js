@@ -1,33 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
-
+import {acceptCSV,getCurrentId,value,refEmpty} from "../../util/manipulator";
 function AddLecturer() {
 
     const deptRef = useRef(null)
     const abbrRef = useRef(null);
-    const detailRef = useRef(null);
+    const idRef = useRef(null);
     const fnameRef = useRef(null);
     const lnameRef = useRef(null);
     const [departments, setDepartments] = useState([])
 
 
-    const value = (ref) => ref.current.value
-
-    const refEmpty = (ref) => {
-        return ref.current.value === ''
-    }
-
-    const getCurrentId = (ref) => {
-        let activeTags = []
-        const currentNodes = ref.current.childNodes
-        Object.keys(currentNodes).forEach(e => activeTags = [currentNodes[e], ...activeTags])
-        return activeTags.find(node => node.value === value(ref)).dataset.id
-    }
 
     const addLecturerHandler = (e) => {
         e.preventDefault();
 
-        if (!refEmpty(deptRef) && !refEmpty(abbrRef) && !refEmpty(detailRef) && !refEmpty(fnameRef) && !refEmpty(lnameRef)) {
+        if (!refEmpty(deptRef) && !refEmpty(abbrRef) && !refEmpty(idRef) && !refEmpty(fnameRef) && !refEmpty(lnameRef)) {
             const newLecturer = {
+                _id:value(idRef),
                 fname: value(fnameRef),
                 lname: value(lnameRef),
                 dept_id: getCurrentId(deptRef),
@@ -48,7 +37,7 @@ function AddLecturer() {
                     console.log(data)
                     deptRef.current.value = ''
                     abbrRef.current.value = ''
-                    detailRef.current.value = ''
+                    idRef.current.value = ''
                     fnameRef.current.value = ''
                     lnameRef.current.value = ''
                 })
@@ -130,13 +119,14 @@ function AddLecturer() {
 
                     <div className="form-group pt-3">
                         <label htmlFor="exampleFormControlTextarea1">Details</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  ref={detailRef}></textarea>
+                        <input type="text" className="form-control py-0"
+                               placeholder="Staff ID" aria-label="Staff ID"
+                               aria-describedby="basic-addon1" ref={idRef}/>
                     </div>
-                    <div className="row pt-3">
+                    <div className="row pt-3 d-flex justify-content-center">
                         <div className="form-group">
-                            <input id={'add_lecturer'} className="btn btn-primary form-control" type={'submit'}
-                                   value={'Add Lecturer'}></input>
+                            <input id={'add_lecturer'} className="btn btn-warning form-control bg-theme" type={'submit'}
+    value={'Add Lecturer'}/>
                         </div>
                     </div>
                 </form>

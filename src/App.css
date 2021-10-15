@@ -144,4 +144,40 @@ svg path {
   fill: #f8f7ff;
 }
 
+.bg-theme{
+  background-color: #fff;
+  color:#f5a700;
+  font-weight: bold;
+  border:1px solid #f5a700;
+}
+
+.blue{
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+.orange{
+  background-color: orange;
+  color: black;
+}
+.green{
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+.yellow{
+  background-color: yellow;
+  color: black;
+}
+/*div.periodx{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70px;
+  padding-left: 0px;
+  justify-content: center;
+  align-content: center;
+  margin-left: 0px;
+}*/
+
 

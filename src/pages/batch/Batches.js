@@ -41,7 +41,7 @@ function Batches() {
                     <li className="breadcrumb-item active">Batches</li>
                 </ol>
             </nav>
-            <table className="table table-bordered" style={{borderRadius:'50px'}} >
+            <table className="table table-bordered" style={{borderRadius: '50px'}}>
                 <thead className={'table-dark'}>
                 <tr>
                     <th>#id</th>
@@ -55,7 +55,7 @@ function Batches() {
                 {batchList && batchList.map((batch) => {
                     const {_id, name, class_size, year, dept_id} = batch;
                     return (
-                        <tr onClick={viewBatchHandler}>
+                        <tr onClick={viewBatchHandler} key={Math.random() * 10000}>
                             <td>{_id}</td>
                             <td>{name}</td>
                             <td>{class_size}</td>

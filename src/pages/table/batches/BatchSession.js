@@ -26,7 +26,7 @@ function BatchSession() {
                 </nav>
             </div>
             <Table id={id}/>
-            {/*<Table id={id}/>*/}
+            {/*<TableOld id={id}/>*/}
         </section>
     )
 }
